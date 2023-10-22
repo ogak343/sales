@@ -3,8 +3,10 @@ package com.example.sales.dto;
 import com.example.sales.commons.constants.NotificationType;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
-public class UserCreateDto {
+public class CustomerCreateDto {
     private String username;
     private String password;
     private String firstname;
@@ -12,4 +14,9 @@ public class UserCreateDto {
     private NotificationType type;
     private String email;
     private String number;
+
+    public boolean suitableToCreate() {
+        return Objects.nonNull(username) && Objects.nonNull(password) && Objects.nonNull(type)
+                && Objects.nonNull(email) && Objects.nonNull(number);
+    }
 }

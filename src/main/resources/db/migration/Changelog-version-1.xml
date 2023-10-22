@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="migration-1" author="Ogabek">
+        <sql>
+            create table users (
+                id bigserial not null constraint user_id primary key,
+                username varchar not null,
+                password varchar not null,
+                firstname varchar,
+                lastname varchar,
+                email varchar not null,
+                number varchar not null,
+                active boolean not null,
+                role varchar not null,
+                created_at timestamp not null,
+                updated_at timestamp,
+                deleted_at timestamp
+            );
+            create table departments (
+                id bigserial not null constraint department_id primary key,
+                legal_name varchar not null,
+                name varchar,
+                location varchar not null,
+                info varchar,
+                created_at timestamp not null,
+                updated_at timestamp,
+                deleted_at timestamp
+            );
+            create table numbers (
+                id bigserial not null constraint number_id primary key,
+                number varchar not null
+            );
+            create table user_department (
+                user_id bigserial references users(id),
+                department_id bigserial references departments(id)
+            );
+            create table confirmation_code (
+                id bigserial not null constraint code_id primary key,
+                code int not null,
+                created_at timestamp not null,
+                expired_at timestamp not null,
+                confirmed_at timestamp,
+                user_id bigserial,
+                foreign key (user_id) references users(id)
+            );
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

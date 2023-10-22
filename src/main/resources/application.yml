@@ -1,1 +1,30 @@
+spring:
+  profiles:
+    active: local
+  jackson:
+    time-zone: Asia/Tashkent
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/sales
+    username: postgres
+    password: ogabek
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQL9Dialect
+      ddl-auto: none
+  liquibase:
+    default-schema: public
+    enabled: true
+    change-log: classpath:/db/ChangelogConfig.xml
+  mail:
+    port: 465
+    host: smtp.gmail.com
+    username: khamdamov343@gmail.com
+    password: piujtzddmsjsuctt
+  application:
+    name: sales
+jwt:
+  secret: pQb0Y4aVcYD1pu160WaHVN4IHN9bL6IamWMH15S0Vp9UioQ6j0iY78kh7XtCPmNZI3WxqOsrBBuuIsWzsiIQ
+  access:
+  refresh:
 

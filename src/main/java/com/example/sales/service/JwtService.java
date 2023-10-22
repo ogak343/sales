@@ -1,2 +1,5 @@
-package com.example.sales.service;public interface JwtService {
+package com.example.sales.service;
+
+public interface JwtService {
+    String extractUsername(String token);
 }

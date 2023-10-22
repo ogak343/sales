@@ -1,23 +1,31 @@
 package com.example.sales.controller;
 
-import com.example.sales.dto.UserCreateDto;
+import com.example.sales.dto.CustomerCreateDto;
 import com.example.sales.dto.UserRespDto;
 import com.example.sales.dto.UserUpdateDto;
 import com.example.sales.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
-public class UserController {
+public class CustomerController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserRespDto> create(@RequestBody UserCreateDto createDto) {
+    public ResponseEntity<UserRespDto> create(@RequestBody CustomerCreateDto createDto) {
         return ResponseEntity.status(CREATED).body(userService.create(createDto));
     }
 

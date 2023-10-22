@@ -1,4 +1,6 @@
-FROM ubuntu:latest
-LABEL authors="khamd"
+FROM eclipse-temurin:17-jdk
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /sales
+EXPOSE 8080
+COPY build/libs/sales-0.0.1-SNAPSHOT.jar sales.jar
+ENTRYPOINT ["java", "-jar", "sales.jar"]
